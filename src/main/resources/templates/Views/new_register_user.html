@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+
+
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+
+	<div class="container">
+		<h1> Register </h1>
+		<div class="card bg-ligth">
+
+			<div class="card-header bg-dark text-white ">
+				Are You Ready?
+			</div>
+
+			
+			<div class="card-body container">
+				<form th:action="@{/Save_New_User}" th:object="${user}" method="post" enctype="multipart/form-data">
+
+					<div class="form-group">
+
+						<input type="hidden" th:field="*{id_user}">
+
+						<label for="email_address"> Title: </label>
+						<input type="text" th:field="*{email_address}" class="form-control" style="width: 500px;"
+							id="input_email" placeholder="Email Address">
+						<small> </small>
+
+
+
+						<label for="nickname"> Nickname: </label>
+						<input type="text" th:field="*{nickname}" class="form-control" style="width: 500px;"
+							id="input_nickname" placeholder="Nickname">
+						
+						<label for="password"> Password: </label>
+						<input type="text" th:field="*{password}" class="form-control" style="width: 500px;"
+							id="input_password" placeholder="Password">
+						
+						<div class="form-group row">
+							<label for="Imagen"> Imagen: </label>
+							<input type="file" name="file" id="img">
+						</div>
+
+					</div>
+					
+					<input type="submit" class="btn btn-primary" value="save" />
+				</form>
+			</div>
+			
+			
+		</div>
+	</div>
+
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

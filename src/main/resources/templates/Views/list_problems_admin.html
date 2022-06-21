@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "Templates_web/template :: head">   </head>
+
+<body>
+    <header th:replace = "Templates_web/template :: header"> </header>
+    <div class = "container">
+        <h1>HELLO Problems ADMIN!!!</h1>
+        <table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Title</th>
+					<th scope="col">Solution</th>
+					<th scope="col">Statement</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+					<th scope="col">Visible</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cl : ${list}">
+					<th th:text="${cl.id_problem}"> </th>
+					<th th:text="${cl.title}"> </th>
+					<td th:text="${cl.solution}"> </td>
+					<th> <a th:href="@{'/resources/' + ${cl.document}} " download >Download</a> </th>
+					<th>
+						<a class="btn btn-warning" th:href="@{/Admin/Edit/} + ${cl.id_problem}"
+							th:text="Edit"></a>
+					</th>
+					<th>
+						<a class="btn btn-danger" th:href="@{/Admin/Delete/} + ${cl.id}"
+							th:text="Delete" onclick="return confirm ('Are you sure?')">
+						</a>
+					</th>
+					
+					<th>
+						<input class="form-check-input; margin;0px 70px" type="checkbox" th:checked="${cl.hidden} ? 'checked' " disabled="disabled">					
+   				    </th>
+   				    
+				</tr>
+			</tbody>
+		</table>
+    </div>
+    <footer th:replace = "Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

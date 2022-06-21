@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+
+
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+
+
+	<div class="container">
+
+
+
+		<div class="row">
+			<div class="col-1">
+				<img th:src="@{/images/spartan.jpg}" src="../static/images/spartan.jpg" width="70px" height="70px"
+					class="d-inline-block align-top" alt="">
+			</div>
+			<div class="col-11">
+				<h1>Training Zone</h1>
+			</div>
+		</div>
+		<br>
+
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Title</th>
+					<th scope="col">Statement</th>
+					<th scope="col">Submit</th>
+					<th scope="col">Solved by:</th>
+					<th scope="col">My Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cl : ${list}" th:object=${"aux_user"}>
+					<th th:text="${cl.id_problem}"> </th>
+					<th th:text="${cl.title}"> </th>
+					<th> <a th:href="@{'/resources/' + ${cl.document}} " download>Download</a> </th>
+
+					<th>
+                 	<a class="btn  btn-success" th:href="@{/User/Submit/} + ${cl.id_problem}           "   
+							th:text="Solve"></a>
+					</th>
+					
+					<th th:text=${cl.solved_by}> </th>
+					
+					<th>
+						<input class="form-check-input; margin;0px 70px" type="checkbox" th:checked="${cl.solved} ? 'checked'">					
+   				    </th>
+					
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+
+
+
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

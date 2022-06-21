@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "Templates_web/template :: head">   </head>
+
+<body>
+    <header th:replace = "Templates_web/template :: header"> </header>
+    <div class = "container">
+        <h1>HELLO Contest admin</h1>
+    	<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Password</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cl : ${list}">
+					<th th:text="${cl.id}"> </th>
+					<th th:text="${cl.name}"> </th>
+					<td th:text="${cl.password}"> </td>
+					<th>
+						<a class="btn btn-warning" th:href="@{/Admin/Contest/Edit/} + ${cl.id}"
+							th:text="Edit"></a>
+					</th>
+					<th>
+						<a class="btn btn-danger" th:href="@{/Admin/Contest/Delete/} + ${cl.id}"
+							th:text="Delete" onclick="return confirm ('Are you sure?')">
+						</a>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+    <footer th:replace = "Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

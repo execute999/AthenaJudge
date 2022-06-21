@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+
+	<div >
+		<form action="#" th:action="@{/processForm}" th:object="${user}" method="post">
+    		<div class="jumbotron jumbotron-fluid">
+
+				<div class="container">
+					<h1 th:text="${user.nickname}"></h1>
+					<p th:text="${user.email_address}"></p>
+				</div>
+				
+				<div class="container">
+					<!--
+					<img th:src="${user.img}" src="../static/images/spartan.jpg" width="70px" height="70px"
+					class="d-inline-block align-top" alt="">
+					-->
+				</div>
+				
+			</div>
+		</form>
+		
+	</div>
+
+	<div>
+    
+		<div align="center" style="width: 1000px;">
+			<h2> My Submissions</h2>
+			<div id="piechart" style="width: 900px; height: 500px;"></div>
+		</div>
+
+		<script th:inline="javascript">
+			var real_data = /*[[${chartData}]]*/'noValue';
+			$(document).ready(function () {
+				google.charts.load('current', {
+					packages: ['corechart', 'bar']
+				});
+				google.charts.setOnLoadCallback(drawColumnChart);
+				google.charts.setOnLoadCallback(drawPieChart);
+			});
+			function drawColumnChart() {
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Year');
+				data.addColumn('number', 'Views');
+				Object.keys(real_data).forEach(function (key) {
+					data.addRow([key, real_data[key]]);
+				});
+				var options = {
+					title: 'Blog stats',
+					hAxis: {
+						title: 'Years',
+					},
+					vAxis: {
+						title: 'View Count'
+					}
+				};
+				var chart = new google.visualization.ColumnChart(document
+					.getElementById('chart_div'));
+				chart.draw(data, options);
+			}
+			function drawPieChart() {
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Year');
+				data.addColumn('number', 'Views');
+				Object.keys(real_data).forEach(function (key) {
+					data.addRow([key, real_data[key]]);
+				});
+				var options = {
+					title: 'Blog stats'
+				};
+				var chart = new google.visualization.PieChart(document
+					.getElementById('piechart'));
+				chart.draw(data, options);
+			}
+		</script>
+
+	</div>	
+
+
+
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

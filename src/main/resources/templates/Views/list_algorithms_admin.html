@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "Templates_web/template :: head">   </head>
+
+
+<body>
+    <header th:replace = "Templates_web/template :: header"> </header>
+
+
+    <div class = "container">
+        
+        
+        
+        <div class = "container">
+        <h1> HELLO ALGORITHMS ADMIN </h1>
+        <table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Document</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cl : ${list}">
+					<th th:text="${cl.id_algorithm}"> </th>
+					<th th:text="${cl.name}"> </th>
+				
+					
+					<th> <a th:href="@{'/resources/' + ${cl.doc}} " download >Download</a> </th>
+					
+					<th>
+						<a class="btn btn-warning" th:href="@{/Admin/Edit_Algorithm/} + ${cl.id_algorithm}"
+							th:text="Edit"></a>
+					</th>
+					
+					<th>
+						<a class="btn btn-danger" th:href="@{/Admin/Delete_Algorithm/} + ${cl.id_algorithm}"
+							th:text="Delete" onclick="return confirm ('Are you sure?')"></a>
+					</th>
+					
+				</tr>
+			</tbody>
+		</table>
+
+    </div>
+        
+    </div>
+
+	
+
+
+    <footer th:replace = "Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

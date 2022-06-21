@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+
+
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+
+	<div class="container">
+		<br>
+		<h1> RANKLIST </h1>
+		<div class="card bg-ligth">
+		
+		
+			<table class="table">
+			<thead class="thead-dark">
+				<tr>
+				<th scope="col">#</th>
+					<th scope="col">User</th>
+					<th scope="col">Solved</th>
+				</tr>
+			</thead>
+			<tbody>
+			
+				<!-- 
+					
+					
+					
+				-->
+			
+				<tr th:each="cl : ${list}" th:object=${"counter"}>
+					<th th:text="${counter.incrementAndGet()}"> </th>
+					<th th:text="${cl.nickname}"> </th>
+					<th th:text="${cl.solved}"> </th>
+				</tr>
+
+			</tbody>
+		</table>
+		
+		</div>
+	</div>
+
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

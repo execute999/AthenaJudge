@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+
+
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+
+	<div class="container">
+		<h1>New Contest</h1>
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark text-white ">
+				
+			</div>
+			<div class="card-body container">
+			
+				<form th:action="@{/Admin/SaveContest}" th:object="${new_contest}" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<form th:action="@{/Admin/Save}" th:object="${new_contest}" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+
+						<input type="hidden" th:field="*{id}">
+
+						<label for="name"> Name: </label>						
+						<input type="text" th:field="*{name}" class="form-control" style="width: 500px;"
+							id="input_name" placeholder="Name Contest">
+						<small> </small>
+
+						<label for="name"> Password: </label>						
+						<input type="text" th:field="*{password}" class="form-control" style="width: 500px;"
+							id="input_password" placeholder="password">
+						<small> </small>
+
+
+					</div>	
+					<input type="submit" class="btn btn-primary" value="save" />
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

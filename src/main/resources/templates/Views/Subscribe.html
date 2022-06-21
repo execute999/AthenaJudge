@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+
+
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+
+	<div class="container">
+		<h1> SUBSCRIBE </h1>
+		<div class="card-body container">
+
+			<form th:action="@{/Check} +'/'+  ${idContest}" method="post">
+				
+				<input type="text" th:value="${sourceText}" name="sourceText" />
+				<input type="submit" />
+			</form>
+
+		</div>
+	</div>
+
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

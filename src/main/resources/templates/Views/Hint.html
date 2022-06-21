@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+	<br>
+	<div class="container">
+		<br>
+
+		<tr th:each="cl : ${list}">
+			<div class="container advice">
+				<div class="advice">
+					<br>
+					<h2 th:text="${cl.nickname_user}"> </h2>
+					<th th:text="${cl.nickname_user}"> </th> <br>
+					<h4 th:text="${cl.advice}"> </h4>
+				</div>
+				<br>
+			</div>
+			<br>
+			<br>
+		</tr>
+		
+		<!-- NEW HINT-->		
+		<div class="card-body container">
+				<form th:action="@{/Problems/Save_Advice}" th:object="${new_advice}" method="post"
+					enctype="multipart/form-data">
+
+						
+						<textarea th:field = "*{advice}" rows="5" cols="40" id="TITLE"> </textarea> <br>
+						<input type="submit" class="btn btn-primary botonst" value="Post" />
+					
+				
+				</form>
+			</div>
+		
+		
+	</div>
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

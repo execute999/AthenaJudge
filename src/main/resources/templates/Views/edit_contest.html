@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+
+
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+
+	<div class="container">
+		<h1>Contest Details</h1>
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark text-white ">
+				Update Contest
+			</div>
+			<div class="card-body container">
+
+				<form th:action="@{/Admin/SaveContest}" th:object="${contest}" method="post"
+					enctype="multipart/form-data">
+					<div class="form-group">
+						<form th:action="@{/Admin/Save}" th:object="${contest}" method="post"
+							enctype="multipart/form-data">
+							<div class="form-group">
+
+								<input type="hidden" th:field="*{id}">
+
+								<label for="name"> Id: </label>
+								<input type="text" th:field="*{id}" class="form-control" style="width: 500px;"
+									id="input_name" placeholder="Name Contest" disabled="disabled">
+								<small> </small>
+
+								<label for="name"> Name: </label>
+								<input type="text" th:field="*{name}" class="form-control" style="width: 500px;"
+									id="input_name" placeholder="Name Contest">
+								<small> </small>
+
+								<label for="name"> Password: </label>
+								<input type="text" th:field="*{password}" class="form-control" style="width: 500px;"
+									id="input_password" placeholder="password">
+								<small> </small>
+
+
+
+							</div>
+							<input type="submit" class="btn btn-primary" value="save" />
+
+						</form>
+
+					</div>
+			</div>
+		</div>
+
+
+		<!-- THIS IS THE END-->
+
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark text-white ">
+				Update Contest
+			</div>
+			<div class="card-body container">
+
+				<form th:action="@{/Admin/SaveProblemsContest}" th:object="${list}" method="post"
+					enctype="multipart/form-data">
+					<div class="form-group">
+						<form th:action="@{/Admin/SaveProblemsContest}" th:object="${list}" method="post"
+							enctype="multipart/form-data">
+							<div class="form-group">
+
+								<table class="table">
+									<thead class="thead-dark">
+										<tr>
+											<th scope="col"> ID </th>
+											<th scope="col"> Name </th>
+											<th scope="col"> Selected </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each = "cl , itemStat : ${list}">
+										
+											<!-- 
+												 <tr th:each="book, itemStat : *{books}">
+                    								<td><input th:field="*{books[__${itemStat.index}__].title}" /></td>
+											-->
+											<th th:text="${cl.idProblem}"> </th>
+											<th th:text="${cl.title}"> </th>
+
+											<th>
+												<input class="form-check-input; margin;0px 70px" 
+												th:field = "*{books[__${itemStat.index}__].selected}"	
+												>
+											</th>
+
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+							<input type="submit" class="btn btn-primary" value="save" />
+
+						</form>
+					</div>
+			</div>
+		</div>
+		
+		<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

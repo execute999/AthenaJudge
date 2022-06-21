@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+	<div class="container">
+		<br>
+		<h2>
+			Data about Athena Judge ;)
+		</h2>
+		<br>
+		<p th:text="${info1}"></p>
+		<p th:text="${info2}"></p>
+		<p th:text="${info3}"></p>
+		<p th:text="${info4}"></p>
+		<p th:text="${info5}"></p>
+		<p th:text="${info6}"></p>
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

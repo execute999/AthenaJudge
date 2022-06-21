@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="Templates_web/template :: head"> </head>
+
+
+<body>
+	<header th:replace="Templates_web/template :: header"> </header>
+
+	<div class="container">
+		<br>
+		<div class="row">
+			<div class="col-1">
+				<img  th:src = "@{/images/anphora.jpg}" src = "../static/images/anphora.jpg"   
+				width="70px" height="70px"
+			   class="d-inline-block align-top" alt="">
+			</div>
+			<div class="col-11">
+				<h1> Submit a Solution</h1>
+			</div>
+		</div>
+		<br>
+		<div class="card bg-ligth">
+
+			<div class="card-header bg-dark text-white ">
+				Submit Solution
+			</div>
+
+
+
+
+			<div class="card-body container">
+				<form th:action="@{/User/TestSubmission}" th:object="${new_submission}" method="post"
+					enctype="multipart/form-data">
+
+					<div class="form-group">
+
+						<input type="hidden" th:field="*{id_problem}">
+						<input type="hidden" th:field="*{id_user}">
+
+						<label for="title"> Your Solution: </label>
+						<input type="text" th:field="*{answer}" class="form-control" style="width: 500px;"
+							id="input_answer" placeholder="Your Solution:">
+					</div>
+
+					<input type="submit" class="btn btn-primary botonst" value="Submit" />
+				</form>
+			</div>
+
+
+		</div>
+		<br>
+
+		<div th:object="${new_submission}">
+
+			<a class="btn botonst  btn-success" th:href="@{/Hint/} + ${new_submission.id_problem}           "
+				th:text="Hint"></a>
+
+		</div>
+
+	</div>
+
+
+
+	<footer th:replace="Templates_web/template :: footer"> </footer>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "Templates_web/template :: head">   </head>
+
+
+<body>
+    <header th:replace = "Templates_web/template :: header"> </header>
+
+
+    <div class = "container">
+		
+		<div class="row">
+			<div class="col-1">
+				<img  th:src = "@{/images/herrero.webp}" src = "../static/images/spartan.jpg"   
+				width="70px" height="70px"
+			   class="d-inline-block align-top" alt="">
+			</div>
+			<div class="col-11">
+				<h1> HELLO ALGORITHMS </h1>
+			</div>
+		</div>
+		<br>
+        <table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col"> Name </th>
+					<th scope="col"> Download </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cl : ${list}">
+					<th th:text="${cl.name}"> </th>
+					<th> <a th:href="@{'/resources/' + ${cl.doc}} " download >Download</a> </th>
+				</tr>
+			</tbody>
+		</table>
+
+    </div>
+
+	
+
+
+    <footer th:replace = "Templates_web/template :: footer"> </footer>
+</body>
+
+</html>
